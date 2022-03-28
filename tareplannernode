@@ -1,0 +1,16 @@
+
+
+#include <ros/ros.h>
+#include "sensor_coverage_planner/sensor_coverage_planner_ground.h"
+
+int main(int argc, char** argv)//argc、argv的理解都在本子上，目前理解这两个参数是为了之后在命令行中自己改参数方便
+{
+	ros::init(argc, argv, "tare_planner_node");//节点名，必需
+	ros::NodeHandle node_handle;//开启节点
+	ros::NodeHandle private_node_handle("~");//私有节点
+
+	sensor_coverage_planner_3d_ns::SensorCoveragePlanner3D tare_planner(node_handle, private_node_handle);//程序入口处，实例化了SensorCoveragePlanner3D，各种功能从这里深入展开，在里面处理node；
+
+	ros::spin();
+	return 0;
+}
